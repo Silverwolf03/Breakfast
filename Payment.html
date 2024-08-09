@@ -9,8 +9,6 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
             background-color: #344e41;
             color: white;
         }
@@ -26,6 +24,7 @@
             text-decoration: none;
             font-weight: bold;
         }
+<<<<<<< Updated upstream
         .content {
             padding: 20px;
         }
@@ -36,6 +35,8 @@
             max-width: 800px;
             border-radius: 10px;
         }
+=======
+>>>>>>> Stashed changes
         .payment-method {
             background-color: #657153;
             padding: 10px;
@@ -44,12 +45,17 @@
             cursor: pointer;
             display: flex;
             align-items: center;
+<<<<<<< Updated upstream
+=======
+            transition: background-color 0.3s;
+>>>>>>> Stashed changes
         }
         .payment-method img {
             width: 50px;
             height: 50px;
             border-radius: 10px;
             margin-right: 10px;
+<<<<<<< Updated upstream
         }
         .total {
             display: flex;
@@ -60,11 +66,14 @@
         }
         .confirm-button, .back-button {
             margin-top: 20px;
+=======
+>>>>>>> Stashed changes
         }
         .payment-method.selected {
             background-color: #ffff1d;
             color: #000;
         }
+<<<<<<< Updated upstream
     </style>
 </head>
 <body>
@@ -75,10 +84,40 @@
             <a href="menu.html" class="mx-2">เมนูอาหาร</a>
             <a href="order.html" class="mx-2">สั่งอาหาร</a>
             <a href="shopping-cart.html" class="active mx-2">ตะกร้าของคุณ</a>
+=======
+        .total {
+            font-size: 1.2rem;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Bootstrap Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="#">My Store</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a href="Homepage.html" class="nav-link">หน้าหลัก</a>
+                </li>
+                <li class="nav-item">
+                    <a href="Menu.html" class="nav-link">เมนูอาหาร</a>
+                </li>
+                <li class="nav-item">
+                    <a href="Order.html" class="nav-link">สั่งอาหาร</a>
+                </li>
+                <li class="nav-item">
+                    <a href="shoppingCart.html" class="nav-link active">ตะกร้าของคุณ</a>
+                </li>
+            </ul>
+>>>>>>> Stashed changes
         </div>
-    </div>
+    </nav>
 
-    <div class="content">
+    <div class="container mt-5">
         <div class="payment-methods">
             <h2 class="text-center">ชำระเงินโดย</h2>
             <div class="payment-method" onclick="selectPaymentMethod('บัตรเครดิต/บัตรเดบิต', this)">
@@ -93,11 +132,11 @@
                 <img src="img/พร้อมเพย์.png" alt="QR พร้อมเพย์">
                 <div>QR พร้อมเพย์</div>
             </div>
-            <div class="total">
+            <div class="total d-flex justify-content-between mt-4">
                 <div>รวม</div>
                 <div id="totalPrice">฿0.00</div>
             </div>
-            <div class="d-flex justify-content-between">
+            <div class="d-flex justify-content-between mt-3">
                 <a href="shopping-cart.html" class="btn btn-secondary">กลับไปยังรายการอาหาร</a>
                 <a href="confirm-payment.html" class="btn btn-danger" id="confirmPaymentButton" style="display: none;">ยืนยันการชำระเงิน</a>
             </div>
