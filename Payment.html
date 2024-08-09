@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="th">
 <head>
@@ -17,20 +16,6 @@
         }
         .navbar {
             background-color: #344e41;
-
-            color: white;
-            padding: 1rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        .navbar a {
-            color: white;
-            margin: 0 15px;
-
             padding: 1rem;
             position: sticky;
             top: 0;
@@ -38,28 +23,19 @@
         }
         .navbar a {
             color: white;
-
             text-decoration: none;
             font-weight: bold;
         }
         .content {
             padding: 20px;
-
-            text-align: center;
-
-
         }
-        .order-summary, .payment-methods {
+        .payment-methods {
             background-color: #344e41;
             padding: 20px;
             margin: 20px auto;
             max-width: 800px;
             border-radius: 10px;
         }
-
-        .order-summary h2, .payment-methods h2 {
-            margin-bottom: 20px;
-=======
         .payment-method {
             background-color: #657153;
             padding: 10px;
@@ -68,35 +44,12 @@
             cursor: pointer;
             display: flex;
             align-items: center;
-
         }
-        .order-item, .payment-method {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #657153;
-            padding: 10px;
-            border-radius: 10px;
-            margin-bottom: 10px;
-            cursor: pointer;
-        }
-        .order-item img, .payment-method img {
+        .payment-method img {
             width: 50px;
             height: 50px;
             border-radius: 10px;
-
-        }
-        .order-item div, .payment-method div {
-            flex: 1;
-            text-align: left;
-            margin-left: 10px;
-        }
-        .order-item span, .payment-method span {
-            flex: 0 0 auto;
-            margin-left: 10px;
-=======
             margin-right: 10px;
-
         }
         .total {
             display: flex;
@@ -112,26 +65,9 @@
             background-color: #ffff1d;
             color: #000;
         }
-        .payment-method.selected {
-            background-color: #ffff1d;
-            color: rgb(0, 0, 0);
-            padding: 10px 20px;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-        }
     </style>
 </head>
 <body>
-
-    <div class="navbar">
-        <div></div>
-        <div>
-            <a href="homepage.html">หน้าหลัก</a>
-            <a href="menu.html">เมนูอาหาร</a>
-            <a href="order.html">สั่งอาหาร</a>
-            <a href="shopping-cart.html" class="active">ตะกร้าของคุณ</a>
-=======
     <div class="navbar d-flex justify-content-between align-items-center">
         <div></div>
         <div>
@@ -139,17 +75,12 @@
             <a href="menu.html" class="mx-2">เมนูอาหาร</a>
             <a href="order.html" class="mx-2">สั่งอาหาร</a>
             <a href="shopping-cart.html" class="active mx-2">ตะกร้าของคุณ</a>
-
         </div>
     </div>
 
     <div class="content">
         <div class="payment-methods">
-
-            <h2>ชำระเงินโดย</h2>
-
             <h2 class="text-center">ชำระเงินโดย</h2>
-
             <div class="payment-method" onclick="selectPaymentMethod('บัตรเครดิต/บัตรเดบิต', this)">
                 <img src="img/credit.png" alt="บัตรเครดิต/บัตรเดบิต">
                 <div>บัตรเครดิต/บัตรเดบิต</div>
@@ -173,13 +104,10 @@
         </div>
     </div>
 
-
-=======
     <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
     <script>
         function loadTotalPrice() {
             let cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -203,4 +131,3 @@
     </script>
 </body>
 </html>
-
