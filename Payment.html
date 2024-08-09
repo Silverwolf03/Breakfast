@@ -1,11 +1,159 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-       <meta charset="UTF-8">
-       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-       <title>Document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #344e41;
+            color: white;
+        }
+        .navbar {
+            background-color: #344e41;
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .navbar a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .content {
+            padding: 20px;
+            text-align: center;
+        }
+        .order-summary, .payment-methods {
+            background-color: #344e41;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 800px;
+            border-radius: 10px;
+        }
+        .order-summary h2, .payment-methods h2 {
+            margin-bottom: 20px;
+        }
+        .order-item, .payment-method {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #657153;
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+        .order-item img, .payment-method img {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+        }
+        .order-item div, .payment-method div {
+            flex: 1;
+            text-align: left;
+            margin-left: 10px;
+        }
+        .order-item span, .payment-method span {
+            flex: 0 0 auto;
+            margin-left: 10px;
+        }
+        .total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            font-size: 1.2rem;
+        }
+        .confirm-button, .back-button {
+            background-color: #ff5e5e;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .confirm-button:hover, .back-button:hover {
+            background-color: #ff0000;
+        }
+        .payment-method.selected {
+            background-color: #ffff1d;
+            color: rgb(0, 0, 0);
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+    </style>
 </head>
 <body>
-       
+    <div class="navbar">
+        <div></div>
+        <div>
+            <a href="homepage.html">หน้าหลัก</a>
+            <a href="menu.html">เมนูอาหาร</a>
+            <a href="order.html">สั่งอาหาร</a>
+            <a href="shopping-cart.html" class="active">ตะกร้าของคุณ</a>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="payment-methods">
+            <h2>ชำระเงินโดย</h2>
+            <div class="payment-method" onclick="selectPaymentMethod('บัตรเครดิต/บัตรเดบิต', this)">
+                <img src="img/credit.png" alt="บัตรเครดิต/บัตรเดบิต">
+                <div>บัตรเครดิต/บัตรเดบิต</div>
+            </div>
+            <div class="payment-method" onclick="selectPaymentMethod('เงินสด', this)">
+                <img src="img/cash.png" alt="เงินสด">
+                <div>เงินสด</div>
+            </div>
+            <div class="payment-method" onclick="selectPaymentMethod('QR พร้อมเพย์', this)">
+                <img src="img/พร้อมเพย์.png" alt="QR พร้อมเพย์">
+                <div>QR พร้อมเพย์</div>
+            </div>
+            <div class="total">
+                <div>รวม</div>
+                <div id="totalPrice">฿0.00</div>
+            </div>
+            <a href="shopping-cart.html" class="back-button">กลับไปยังรายการอาหาร</a>
+            <a href="confirm-payment.html" class="confirm-button" id="confirmPaymentButton" style="display: none;">ยืนยันการชำระเงิน</a>
+        </div>
+    </div>
+
+    <script>
+        function loadTotalPrice() {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let totalPrice = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+            document.getElementById('totalPrice').innerText = `฿${totalPrice.toFixed(2)}`;
+            localStorage.setItem('totalPrice', totalPrice.toFixed(2));
+        }
+
+        function selectPaymentMethod(method, element) {
+            localStorage.setItem('paymentMethod', method);
+            document.getElementById('confirmPaymentButton').style.display = 'inline-block';
+
+            // Remove selected class from all payment methods
+            let paymentMethods = document.querySelectorAll('.payment-method');
+            paymentMethods.forEach(pm => pm.classList.remove('selected'));
+
+            // Add selected class to the clicked payment method
+            element.classList.add('selected');
+        }
+
+        window.onload = loadTotalPrice;
+    </script>
 </body>
 </html>
