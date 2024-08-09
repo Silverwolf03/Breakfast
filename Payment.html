@@ -28,17 +28,6 @@
             max-width: 600px; /* จำกัดความกว้างของคอนเทนเนอร์ */
             margin: 0 auto;
         }
-        .order-summary, .payment-methods {
-            background-color: #344e41;
-            padding: 20px;
-            margin: 20px auto;
-            max-width: 800px;
-            border-radius: 10px;
-        }
-
-        .order-summary h2, .payment-methods h2 {
-            margin-bottom: 20px;
-
         .payment-method {
             background-color: #657153;
             padding: 10px;
@@ -48,7 +37,7 @@
             display: flex;
             align-items: center;
             transition: background-color 0.3s;
-            max-width: 1000px; /* จำกัดความกว้างของแต่ละตัวเลือกการจ่ายเงิน */
+            max-width: 500px; /* จำกัดความกว้างของแต่ละตัวเลือกการจ่ายเงิน */
             margin-left: auto;
             margin-right: auto;
         }
@@ -56,17 +45,6 @@
             width: 50px;
             height: 50px;
             border-radius: 10px;
-
-        }
-        .order-item div, .payment-method div {
-            flex: 1;
-            text-align: left;
-            margin-left: 10px;
-        }
-        .order-item span, .payment-method span {
-            flex: 0 0 auto;
-            margin-left: 10px;
-
             margin-right: 10px;
         }
         .payment-method.selected {
@@ -76,30 +54,34 @@
         .total {
             font-size: 1.2rem;
             margin-top: 20px;
-            max-width: 500px; /* จำกัดความกว้างของ section รวม */
+            max-width: 1000px; /* จำกัดความกว้างของ section รวม */
             margin-left: auto;
             margin-right: auto;
         }
     </style>
 </head>
 <body>
-
-    <div class="navbar">
-        <div></div>
-        <div>
-            <a href="homepage.html">หน้าหลัก</a>
-            <a href="menu.html">เมนูอาหาร</a>
-            <a href="order.html">สั่งอาหาร</a>
-            <a href="shopping-cart.html" class="active">ตะกร้าของคุณ</a>
-
-    <div class="navbar d-flex justify-content-between align-items-center">
-        <div></div>
-        <div>
-            <a href="homepage.html" class="mx-2">หน้าหลัก</a>
-            <a href="menu.html" class="mx-2">เมนูอาหาร</a>
-            <a href="order.html" class="mx-2">สั่งอาหาร</a>
-            <a href="shopping-cart.html" class="active mx-2">ตะกร้าของคุณ</a>
-
+    <!-- Bootstrap Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="#">My Store</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a href="homepage.html" class="nav-link">หน้าหลัก</a>
+                </li>
+                <li class="nav-item">
+                    <a href="menu.html" class="nav-link">เมนูอาหาร</a>
+                </li>
+                <li class="nav-item">
+                    <a href="order.html" class="nav-link">สั่งอาหาร</a>
+                </li>
+                <li class="nav-item">
+                    <a href="shopping-cart.html" class="nav-link active">ตะกร้าของคุณ</a>
+                </li>
+            </ul>
         </div>
     </nav>
 
