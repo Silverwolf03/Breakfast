@@ -1,11 +1,177 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-       <meta charset="UTF-8">
-       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-       <title>Document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #344337;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            background-color: #344337;
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .navbar a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+            position: relative;
+        }
+        .navbar .active::after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 4px;
+            background-color: yellow;
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+        }
+        .menu-header {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding-left: 200px; /* เพิ่ม padding-left ที่นี่เพื่อเพิ่มระยะห่างทางซ้าย */
+            padding-right: 200px; /* เพิ่ม padding-right ที่นี่เพื่อเพิ่มระยะห่างทางขวา */
+        }
+        .menu-header h1 {
+            font-size: 6rem;
+            margin-bottom: 20px;
+            margin-right: 20px; /* เพิ่มระยะห่างระหว่าง h1 และ p */
+            margin-top: 0; /* ลด margin ด้านบน */
+        }
+        .menu-header p {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-top: 10px; /* เพิ่มระยะห่างจาก h1 */
+        }
+        .menu-section {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            padding-left: 200px; /* เพิ่ม padding-left ที่นี่เพื่อเพิ่มระยะห่างทางซ้าย */
+            padding-right: 200px; /* เพิ่ม padding-right ที่นี่เพื่อเพิ่มระยะห่างทางขวา */
+        }
+        .menu-section .item {
+            width: 30%;
+        }
+        .menu-section .item h2 {
+            font-size: 1.5em;
+            color: #ffa500;
+        }
+        .menu-section .item p {
+            font-size: 1em;
+        }
+        .menu-section img {
+            width: 100%;
+            margin-top: 10px;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            font-size: 1.5em;
+            color: #ffa500;
+            padding-left: 200px; /* เพิ่ม padding-left ที่นี่เพื่อเพิ่มระยะห่างทางซ้าย */
+            padding-right: 200px; /* เพิ่ม padding-right ที่นี่เพื่อเพิ่มระยะห่างทางขวา */
+        }
+    </style>
 </head>
 <body>
-       
+       <div class="navbar">
+              <div>
+              </div>
+              <div>
+                  <a href="Homepage.html">หน้าหลัก</a>
+                  <a href="Menu.html" class="active">เมนูอาหาร</a>
+                  <a href="Order.html">สั่งอาหาร</a>
+                  <a href="shoppingCart.html">ตะกร้าของคุณ</a>
+              </div>
+          </div>
+          <div class="menu-header">
+              <h1>MENU</h1>
+              <p>อาหารของเรา ผลิตจากวัตถุดิบที่มีคุณภาพ รังสรรค์เมนูผ่าน Chefs ผู้มีประสบการณ์ อาหารสดใหม่ทุกวัน ส่งเร็ว ส่งไว ส่งตรงถึงมือคุณ</p>
+          </div>
+    <div class="menu-section">
+            <div class="item">
+                <h2>ข้าวมันไก่ต้ม 59-</h2>
+                <p>  ข้าวมันไก่ สูตรต้นตำรับดั้งเดิมมีมานานถึง 60 ปี พร้อมน้ำจิ้ม ไก่นำเข้าจากประเทศนอร์เวย์ ต้มในน้ำซุป เห็ดหอมอร่อย</p>
+                <img src="img/ข้าวมันไก่ต้ม.PNG" alt="ข้าวมันไก่ต้ม">
+            </div>
+            <div class="item">
+                <h2>ข้าวต้มปลากระพง 80-</h2>
+                <p>   ข้าวต้มสูตรพิเศษของเรา ผสมผสานกับปลากระพงสดใหม่ ปรุงรสจากเชฟชื่อดัง ทำให้ข้าวต้มปลากระพงอร่อยไม่ซ้ำไคร</p>
+                <img src="img/ข้าวต้มปลากระพง.PNG" alt="ข้าวต้มปลากระพง">
+            </div>
+            <div class="item">
+                <h2>ไข่กระทะ 29-</h2>
+                <p>เมนูสำหรับคนเร่งรีบ อร่อยง่าย ๆ ไข่ของเราทอดไม่ใช้น้ำมัน กุญเชียงทำจากเนื้อ 100% ไม่ใส่สารกันเสีย ดีต่อสุขภาพของคุณ</p>
+                <img src="img/ไข่กะทะ.PNG" alt="ไข่กระทะ">
+            </div>
+        </div>
+
+        <div class="menu-section">
+            <div class="item">
+                <h2>ข้าวต้มกุ้ง 80-</h2>
+                <p>ข้าวต้มสูตรพิเศษของเรา ผสมผสานกับกุ้งเเม่น้ำสดใหม่ ปรุงรสจากเชฟชื่อดัง ทำให้ข้าวต้มกุ้งอร่อยเเบบลงตัว</p>
+                <img src="img/ข้าวต้มกุ้ง2.png" alt="ข้าวต้มกุ้ง">
+            </div>
+            <div class="item">
+                <h2>ข้าวหมกเนื้อ 69-</h2>
+                <p>  ข้าวหมกเนื้อ สูตรอาหรับ ข้าวเม็ดยาว นุ่ม เนื้อวัวชั้นดีหมกนาน 4 ชั่วโมง ทำให้เนื้อมีความหอม นุ่มเป็นพิเศษ</p>
+                <img src="img/ข้าวหมกเนื้อ.PNG" alt="ข้าวหมกเนื้อ">
+            </div>
+        </div>
+
+        <div class="menu-section">
+            <div class="item">
+                <h2>ขนมปังเนยนม 25-</h2>
+                <p>ขนมปังทาเนยปิ้งเตาถ่าน หอม นุ่ม เพราะเราใช้ขนมปังสดใหม่จากเตา ราดด้วยนมข้นหวานที่เราทำเอง</p>
+                <img src="img/ขนมปังเนนยนม2.png" alt="ขนมปังเนยนม">
+            </div>
+            <div class="item">
+                <h2>ขนมจีบกุ้ง 30-</h2>
+                <p>ขนมจีบแป้งบาง ไส้เป็นเนื้อกุ้ง 100% ไม่ผสมแป้ง ทำให้ท่านได้สัมผัสรสชาติกุ้งเเบบเต็มปากเต็มคำ กินคู่หับน้ำจิ้มซีฟู้ด</p>
+                <img src="img/ขนมจีบกุ้ง2.png" alt="ขนมจีบกุ้ง">
+            </div>
+            <div class="item">
+                <h2>ปาท่องโก๋ 30-</h2>
+                <p>ปาท่องโก๋ แป้งหอม นุ่ม กรอบนอก นุ่มใน เราทอดด้วยน้ำมันรำข้าวคุณภาพ ทานคู่กับนมข้นหวานและสังขยาใบเตยที่เราเป็นสูตรลับของเรา</p>
+                <img src="img/ปาท่องโก๋2.png" alt="ปาท่องโก๋">
+            </div>
+        </div>
+
+        <div class="menu-section">
+            <div class="item">
+                <h2>ซาลาเปาไส้ถั่วแดง 30-</h2>
+                <p>ซาลาเปาถั่วเเดง ถั่วเเดงเกรดพรีเมียม นุ่ม หอม นึ่งในอุณหภูมิที่เหมาะสม ทำให้ถั่วเเดงไม่แห้งเป็นผง เป็นเมนูเเนะนำของร้านที่ท่านต้องลองด้วยตัวเอง</p>
+                <img src="img/ซาลาเปาถั่วแดง2.png" alt="ซาลาเปาไส้ถั่วแดง">
+            </div>
+            <div class="item">
+                <h2>ขนมปังสังขยา 25-</h2>
+                <p>ขนมปังปิ้งเตาถ่าน หอม นุ่ม เพราะเราใช้ขนมปังสดใหม่จากเตา ราดด้วยสังขยาใบเตยสูตรเฉพาะของร้านเรา</p>
+                <img src="img/ขนมปังสังขยา2.png" alt="ขนมปังสังขยา">
+            </div>
+        </div>
+
+        <div class="footer">
+            อร่อยถูกใจ คนไทยบินได้ !!
+        </div>
+    </div>
 </body>
 </html>
