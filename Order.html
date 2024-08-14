@@ -85,7 +85,16 @@
             max-width: 800px;
             color: rgb(255, 255, 255);
             line-height: 1.5; /* Adjust line-height for better readability */
-            text-align: center; /* Center the text */
+            text-align: justify; /* Justify text to align lines evenly */
+            text-indent: 2em; /* Indent the first line of each paragraph */
+        }
+
+        .main-content .overlay p:first-of-type {
+            margin-top: 0; /* Remove margin at the top of the first paragraph */
+        }
+
+        .main-content .overlay p + p {
+            margin-top: 20px; /* Ensure consistent spacing between paragraphs */
         }
 
         .order-button {
@@ -128,7 +137,7 @@
         <img src="img/homePage.png" alt="อาหารเช้า">
         <div class="overlay">
             <h1>"BREAKFAST DELIVERY"</h1>
-            <h2 class="highlight-text">ให้เราดูแลมื้อเช้าของคุณ</h2>
+            <h2>ให้เราดูแลมื้อเช้าของคุณ</h2>
             <p>อาหารมื้อเช้าเป็นมื้ออาหารที่สำคัญ โดยทุกเช้าทุกคนต่างรีบเร่งเพื่อออกไปเรียนไปทำงาน อาจทำให้หลายคนไม่ทานหรือเลย “อาหารเช้า” แต่รู้ไหมว่า “อาหารเช้า” เป็นอาหารมื้อสำคัญกว่ามื้ออื่นๆ การงดรับประทานอาหารมื้อเช้า ทำให้ร่างกายได้รับพลังงานและสารอาหารไม่เพียงพอต่อความต้องการของร่างกาย</p>
             <a class="order-button" href="order.html">สั่งเลย</a>
             <p>ส่งเร็ว ส่งตรงจากเตาถึงมือท่าน</p>
