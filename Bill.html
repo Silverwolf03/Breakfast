@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บิลรายการอาหาร</title>
+    <style>
+        body {
+            font-family: "Courier New", Courier, monospace;
+            background-color: #f4f4f4;
+            padding: 20px;
+            text-align: center;
+        }
+        .receipt-container {
+            width: 300px;
+            background-color: #fff;
+            padding: 20px;
+            margin: 0 auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+        .receipt-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .receipt-header h1 {
+            font-size: 18px;
+            margin: 0;
+        }
+        .receipt-header p {
+            font-size: 14px;
+            margin: 5px 0;
+        }
+        .receipt-details {
+            margin-bottom: 20px;
+        }
+        .receipt-details p {
+            margin: 0;
+            font-size: 14px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid #000;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            font-size: 14px;
+        }
+        .total-row {
+            font-weight: bold;
+        }
+        .receipt-footer {
+            text-align: center;
+            font-size: 14px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="receipt-container">
+        <div class="receipt-header">
+            <h1>BREAKFAST DELIVERY</h1>
+            <h1>ใบแจ้งราคา/Order</h1>
+        </div>
+        <div class="receipt-details">
+            <p id="paymentMethod">วิธีการชำระเงิน: </p>
+            <p>Order completed: <span id="endTime">21:00:55</span></p>
+        </div>
+        <table>
+            <tr>
+                <th>No</th>
+                <th>Item</th>
+                <th>Qty</th>
+                <th>Price</th>
+                <th>Amount</th>
+            </tr>
+            <tbody id="billItems">
+                <!-- รายการอาหารจะถูกแทรกที่นี่ -->
+            </tbody>
+            <tr class="total-row">
+                <td colspan="4">รวมทั้งหมด (Total)</td>
+                <td id="totalPrice">฿0.00</td>
+            </tr>
+        </table>
+        <div class="receipt-footer">
+            <p>ขอบคุณที่ใช้บริการค่ะ/Thank you for using the service.</p>
+        </div>
+    </div>
+
+    <script>
+        function loadBill() {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let tableBody = document.getElementById('billItems');
+            let totalPrice = 0;
+            let itemNo = 1;
+
+            // ล้างข้อมูลเก่า
+            tableBody.innerHTML = '';
+
+            cart.forEach(item => {
+                let amount = item.price * item.quantity;
+                totalPrice += amount;
+
+                let row = `
+                    <tr>
+                        <td>${itemNo++}</td>
+                        <td>${item.name}</td>
+                        <td>${item.quantity}</td>
+                        <td>฿${item.price.toFixed(2)}</td>
+                        <td>฿${amount.toFixed(2)}</td>
+                    </tr>
+                `;
+                tableBody.innerHTML += row;
+            });
+
+            document.getElementById('totalPrice').innerText = `฿${totalPrice.toFixed(2)}`;
+
+            // ตั้งค่าเวลาการสั่งเสร็จสิ้นเป็นเวลาปัจจุบัน
+            let currentDateTime = new Date();
+            let formattedTime = currentDateTime.toTimeString().split(' ')[0];
+            document.getElementById('endTime').innerText = formattedTime;
+
+            // แสดงวิธีการชำระเงินที่เลือกไว้
+            let paymentMethod = localStorage.getItem('paymentMethod') || "ไม่ระบุ";
+            document.getElementById('paymentMethod').innerText = "วิธีการชำระเงิน: " + paymentMethod;
+        }
+
+        window.onload = loadBill;
+    </script>
+</body>
+</html>
