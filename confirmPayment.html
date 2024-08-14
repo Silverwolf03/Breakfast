@@ -1,12 +1,183 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
 <head>
-       <meta charset="UTF-8">
-       <meta http-equiv="X-UA-Compatible" content="IE=edge">
-       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-       <title>Document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirm Payment</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #344e41;
+            color: white;
+        }
+        .navbar {
+            background-color: #344e41;
+            color: white;
+            padding: 1rem;
+            display: flex; 
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .navbar a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .content {
+            padding: 20px;
+            text-align: center;
+        }
+        .order-summary, .payment-details {
+            background-color: #344e41;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 800px;
+            border-radius: 10px;
+        }
+        .order-summary h2 {
+            margin-bottom: 20px;
+        }
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #657153;
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        .order-item img {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+        }
+        .order-item div {
+            flex: 1;
+            text-align: left;
+            margin-left: 10px;
+        }
+        .order-item span {
+            flex: 0 0 auto;
+            margin-left: 10px;
+        }
+        .total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            font-size: 1.2rem;
+        }
+        .confirm-button, .back-button {
+            background-color: #ff5e5e;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .confirm-button:hover, .back-button:hover {
+            background-color: #ff0000;
+        }
+        .payment-details {
+            display: none;
+            text-align: left;
+        }
+        .payment-details h3 {
+            margin-bottom: 0px;
+        }
+        .payment-details input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: none;
+        }
+        .qr-code {
+            text-align: center;
+        }
+        .qr-code img {
+            width: 200px;
+            height: 200px;
+        }
+    </style>
 </head>
 <body>
-       
+    <div class="navbar">
+        <div></div>
+        <div>
+            <a href="homepage.html">หน้าหลัก</a>
+            <a href="menu.html">เมนูอาหาร</a>
+            <a href="order.html">สั่งอาหาร</a>
+            <a href="shopping-cart.html" class="active">ตะกร้าของคุณ</a>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="order-summary">
+            <h2>ยืนยันการชำระเงิน</h2>
+            <div id="orderItems"></div>
+            <div class="total">
+                <div>รวม</div>
+                <div id="totalPrice">฿0.00</div>
+            </div>
+            <div class="total">
+                <div>ช่องทางการชำระเงิน</div>
+                <div id="paymentMethod">-</div>
+            </div>
+            <a href="payment.html" class="back-button">กลับไปเลือกช่องทางการชำระเงิน</a>
+            
+        </div>
+        <div class="payment-details" id="creditCardDetails">
+            <h3>ข้อมูลบัตรเครดิต/บัตรเดบิต</h3>
+            <input type="text" placeholder="หมายเลขบัตร" required>
+            <input type="text" placeholder="ชื่อบนบัตร" required>
+            <input type="text" placeholder="วันหมดอายุ (MM/YY)" required>
+            <input type="text" placeholder="CVV" required>
+        </div>
+        <div class="payment-details qr-code" id="qrCodeDetails">
+            <h3>สแกน QR Code เพื่อชำระเงิน</h3>
+            <img src="img/7 Great Uses For QR Codes & How To Generate Your Own For Free.jpg" alt="QR Code">
+        </div>
+        <a href="payment-success.html" class="confirm-button">ชำระเงิน</a>
+    </div>
+
+    <script>
+        function loadOrderSummary() {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let orderItems = document.getElementById('orderItems');
+            let totalPrice = localStorage.getItem('totalPrice');
+            let paymentMethod = localStorage.getItem('paymentMethod');
+            
+            orderItems.innerHTML = '';
+            cart.forEach(item => {
+                let itemElement = `
+                    <div class="order-item">
+                        <img src="${item.image}" alt="${item.name}">
+                        <div>${item.name}</div>
+                        <span>${item.quantity} x ฿${item.price}</span>
+                    </div>
+                `;
+                orderItems.innerHTML += itemElement;
+            });
+
+            document.getElementById('totalPrice').innerText = `฿${totalPrice}`;
+            document.getElementById('paymentMethod').innerText = paymentMethod;
+
+            // Show/hide payment details based on the selected method
+            document.getElementById('creditCardDetails').style.display = paymentMethod === 'บัตรเครดิต/บัตรเดบิต' ? 'block' : 'none';
+            document.getElementById('qrCodeDetails').style.display = paymentMethod === 'QR พร้อมเพย์' ? 'block' : 'none';
+        }
+
+        window.onload = loadOrderSummary;
+    </script>
 </body>
 </html>
