@@ -72,11 +72,29 @@
             color: rgb(255, 255, 255);
         }
 
+        .main-content .overlay h2 {
+            font-size: 2rem;
+            margin: 20px 0;
+            max-width: 800px;
+            color: yellow; /* Changed to yellow */
+        }
+
         .main-content .overlay p {
             font-size: 1.5rem;
             margin: 20px 0;
             max-width: 800px;
             color: rgb(255, 255, 255);
+            line-height: 1.5; /* Adjust line-height for better readability */
+            text-align: justify; /* Justify text to align lines evenly */
+            text-indent: 2em; /* Indent the first line of each paragraph */
+        }
+
+        .main-content .overlay p:first-of-type {
+            margin-top: 0; /* Remove margin at the top of the first paragraph */
+        }
+
+        .main-content .overlay p + p {
+            margin-top: 20px; /* Ensure consistent spacing between paragraphs */
         }
 
         .order-button {
@@ -97,7 +115,6 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark">
-        
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
