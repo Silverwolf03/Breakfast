@@ -1,120 +1,135 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-       <meta charset="UTF-8">
-       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-       <title>Document</title>
-       <style>
-              html, body {
-                  margin: 0;
-                  padding: 0;
-                  height: 100%;
-                  width: 100%;
-                  overflow: hidden;
-              }
-      
-              .main-content {
-                  height: 100vh;
-                  width: 100vw;
-                  position: relative;
-              }
-      
-              .navbar {
-                  background-color: #344337;
-                  color: white;
-                  padding: 1rem;
-                  display: flex;
-                  justify-content: space-between;
-                  align-items: center;
-              }
-      
-              .navbar a {
-                  color: white;
-                  margin: 0 15px;
-                  text-decoration: none;
-                  font-weight: bold;
-                  position: relative;
-              }
-      
-              .navbar .active::after {
-                  content: '';
-                  display: block;
-                  width: 100%;
-                  height: 4px;
-                  background-color: yellow;
-                  position: absolute;
-                  bottom: -8px;
-                  left: 0;
-              }
-      
-              .main-content img {
-                  width: 100%;
-                  height: auto;
-              }
-      
-              .main-content .overlay {
-                  position: absolute;
-                  top: 0;
-                  left: 0;
-                  bottom: 0;
-                  background: rgba(0, 0, 0, 0.5);
-                  display: flex;
-                  flex-direction: column;
-                  justify-content: center;
-                  align-items: center;
-                  padding: 20px;
-                  width: 40%;
-                  text-align: center;
-              }
-      
-              .main-content .overlay h1 {
-                  font-size: 3rem;
-                  margin: 0;
-                  color: rgb(255, 255, 255);
-              }
-      
-              .main-content .overlay p {
-                  font-size: 1.5rem;
-                  margin: 20px 0;
-                  max-width: 800px;
-                  color: rgb(255, 255, 255);
-              }
-      
-              .order-button {
-                  background-color: #000000;
-                  color: white;
-                  padding: 15px 30px;
-                  text-decoration: none;
-                  font-size: 1.2rem;
-                  border-radius: 5px;
-                  transition: background-color 0.3s;
-                  margin-top: 20px;
-              }
-      
-              .order-button:hover {
-                  background-color: #333333;
-              }
-          </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breakfast Delivery</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .main-content {
+            height: 100vh;
+            width: 100vw;
+            position: relative;
+        }
+
+        .navbar {
+            background-color: #344e41;
+            color: white;
+            padding: 1rem;
+        }
+
+        .navbar a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+            position: relative;
+        }
+
+        .navbar .active::after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 4px;
+            background-color: yellow;
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+        }
+
+        .main-content img {
+            width: 100%;
+            height: auto;
+        }
+
+        .main-content .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            width: 40%;
+            text-align: center;
+        }
+
+        .main-content .overlay h1 {
+            font-size: 3rem;
+            margin: 0;
+            color: rgb(255, 255, 255);
+        }
+
+        .main-content .overlay p {
+            font-size: 1.5rem;
+            margin: 20px 0;
+            max-width: 800px;
+            color: rgb(255, 255, 255);
+        }
+
+        .order-button {
+            background-color: #000000;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+        }
+
+        .order-button:hover {
+            background-color: #333333;
+        }
+    </style>
 </head>
 <body>
-       <nav class="navbar">
-              <div></div>
-              <div>
-                  <a class="nav-link active" href="Homepage.html">หน้าหลัก</a>
-                  <a class="nav-link" href="Menu.html">เมนูอาหาร</a>
-                  <a class="nav-link" href="Order.html">สั่งอาหาร</a>
-                  <a class="nav-link" href="shoppingCart.html">ตะกร้าของคุณ</a>
-              </div>
-          </nav>
-      
-          <div class="main-content">
-              <img src="img/homePage.png" alt="อาหารเช้า">
-              <div class="overlay">
-                  <h1>ให้เราดูแลมื้อเช้าของคุณ</h1>
-                  <p>อาหารมื้อเช้าเป็นมื้ออาหารที่สำคัญ โดยทุกเช้าทุกคนต่างรีบเร่งเพื่อออกไปเรียนไปทำงาน อาจทำให้หลายคนไม่ทานหรือเลย “อาหารเช้า” แต่รู้ไหมว่า “อาหารเช้า” เป็นอาหารมื้อสำคัญกว่ามื้ออื่นๆ การงดรับประทานอาหารมื้อเช้า ทำให้ร่างกายได้รับพลังงานและสารอาหารไม่เพียงพอต่อความต้องการของร่างกาย</p>
-                  <a class="order-button" href="order.html">สั่งเลย</a>
-                  <p>ส่งเร็ว ส่งตรงจากเตาถึงมือท่าน</p>
-              </div>
-          </div>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" href="homepage.html">หน้าหลัก</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="menu.html">เมนูอาหาร</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="order.html">สั่งอาหาร</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="shopping-cart.html">ตะกร้าของคุณ</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <img src="img/homePage.png" alt="อาหารเช้า">
+        <div class="overlay">
+            <h1>"BREAKFAST DELIVERY"</h1>
+            <h2>ให้เราดูแลมื้อเช้าของคุณ</h2>
+            <p>อาหารมื้อเช้าเป็นมื้ออาหารที่สำคัญ โดยทุกเช้าทุกคนต่างรีบเร่งเพื่อออกไปเรียนไปทำงาน อาจทำให้หลายคนไม่ทานหรือเลย “อาหารเช้า” แต่รู้ไหมว่า “อาหารเช้า” เป็นอาหารมื้อสำคัญกว่ามื้ออื่นๆ การงดรับประทานอาหารมื้อเช้า ทำให้ร่างกายได้รับพลังงานและสารอาหารไม่เพียงพอต่อความต้องการของร่างกาย</p>
+            <a class="order-button" href="order.html">สั่งเลย</a>
+            <p>ส่งเร็ว ส่งตรงจากเตาถึงมือท่าน</p>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
