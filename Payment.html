@@ -4,90 +4,114 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Payment</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #344337;
+            margin: 0;
+            padding: 0;
+            background-color: #344e41;
             color: white;
         }
         .navbar {
-            background-color: #344337;
+            background-color: #344e41;
+            color: white;
             padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             position: sticky;
             top: 0;
             z-index: 1000;
         }
         .navbar a {
             color: white;
+            margin: 0 15px;
             text-decoration: none;
             font-weight: bold;
         }
-        .payment-methods {
-            max-width: 600px; /* จำกัดความกว้างของคอนเทนเนอร์ */
-            margin: 0 auto;
+        .content {
+            padding: 20px;
+            text-align: center;
         }
-        .payment-method {
+        .order-summary, .payment-methods {
+            background-color: #344e41;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 800px;
+            border-radius: 10px;
+        }
+        .order-summary h2, .payment-methods h2 {
+            margin-bottom: 20px;
+        }
+        .order-item, .payment-method {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             background-color: #657153;
             padding: 10px;
             border-radius: 10px;
             margin-bottom: 10px;
             cursor: pointer;
-            display: flex;
-            align-items: center;
-            transition: background-color 0.3s;
-            max-width: 500px; /* จำกัดความกว้างของแต่ละตัวเลือกการจ่ายเงิน */
-            margin-left: auto;
-            margin-right: auto;
         }
-        .payment-method img {
+        .order-item img, .payment-method img {
             width: 50px;
             height: 50px;
             border-radius: 10px;
-            margin-right: 10px;
+        }
+        .order-item div, .payment-method div {
+            flex: 1;
+            text-align: left;
+            margin-left: 10px;
+        }
+        .order-item span, .payment-method span {
+            flex: 0 0 auto;
+            margin-left: 10px;
+        }
+        .total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            font-size: 1.2rem;
+        }
+        .confirm-button, .back-button {
+            background-color: #ff5e5e;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .confirm-button:hover, .back-button:hover {
+            background-color: #ff0000;
         }
         .payment-method.selected {
             background-color: #ffff1d;
-            color: #000;
-        }
-        .total {
-            font-size: 1.2rem;
-            margin-top: 20px;
-            max-width: 1000px; /* จำกัดความกว้างของ section รวม */
-            margin-left: auto;
-            margin-right: auto;
+            color: rgb(0, 0, 0);
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
         }
     </style>
 </head>
 <body>
-    <!-- Bootstrap Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark">
-        <a class="navbar-brand" href="#"></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a href="Homepage.html" class="nav-link">หน้าหลัก</a>
-                </li>
-                <li class="nav-item">
-                    <a href="Menu.html" class="nav-link">เมนูอาหาร</a>
-                </li>
-                <li class="nav-item">
-                    <a href="Order.html" class="nav-link">สั่งอาหาร</a>
-                </li>
-                <li class="nav-item">
-                    <a href="shoppingCart.html" class="nav-link active">ตะกร้าของคุณ</a>
-                </li>
-            </ul>
+    <div class="navbar">
+        <div></div>
+        <div>
+            <a href="homepage.html">หน้าหลัก</a>
+            <a href="menu.html">เมนูอาหาร</a>
+            <a href="order.html">สั่งอาหาร</a>
+            <a href="shopping-cart.html" class="active">ตะกร้าของคุณ</a>
         </div>
-    </nav>
+    </div>
 
-    <div class="container mt-5">
+    <div class="content">
         <div class="payment-methods">
-            <h2 class="text-center">ชำระเงินโดย</h2>
+            <h2>ชำระเงินโดย</h2>
             <div class="payment-method" onclick="selectPaymentMethod('บัตรเครดิต/บัตรเดบิต', this)">
                 <img src="img/credit.png" alt="บัตรเครดิต/บัตรเดบิต">
                 <div>บัตรเครดิต/บัตรเดบิต</div>
@@ -100,21 +124,15 @@
                 <img src="img/พร้อมเพย์.png" alt="QR พร้อมเพย์">
                 <div>QR พร้อมเพย์</div>
             </div>
-            <div class="total d-flex justify-content-between mt-4">
+            <div class="total">
                 <div>รวม</div>
                 <div id="totalPrice">฿0.00</div>
             </div>
-            <div class="d-flex justify-content-between mt-3">
-                <a href="shoppingCart.html" class="btn btn-secondary">กลับไปยังรายการอาหาร</a>
-                <a href="confirmPayment.html" class="btn btn-danger" id="confirmPaymentButton" style="display: none;">ยืนยันการชำระเงิน</a>
-            </div>
+            <a href="shopping-cart.html" class="back-button">กลับไปยังรายการอาหาร</a>
+            <a href="confirm-payment.html" class="confirm-button" id="confirmPaymentButton" style="display: none;">ยืนยันการชำระเงิน</a>
         </div>
     </div>
 
-    <!-- Bootstrap JS and dependencies -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
         function loadTotalPrice() {
             let cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -128,7 +146,8 @@
             document.getElementById('confirmPaymentButton').style.display = 'inline-block';
 
             // Remove selected class from all payment methods
-            document.querySelectorAll('.payment-method').forEach(pm => pm.classList.remove('selected'));
+            let paymentMethods = document.querySelectorAll('.payment-method');
+            paymentMethods.forEach(pm => pm.classList.remove('selected'));
 
             // Add selected class to the clicked payment method
             element.classList.add('selected');
